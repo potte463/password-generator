@@ -89,17 +89,6 @@ var specialChar = [
 ];
 // Write password to the #password input
 
-function getLength() {
-  var input = prompt("How long do you want your password to be?");
-
-  if (input < 8) {
-    alert("too short");
-  } else if (input > 128) {
-    alert("too long");
-  } else {
-    return input;
-  }
-}
 
 function getSpecs() {
   var useUpperCase = confirm("Include uppercase letters?");
@@ -114,6 +103,19 @@ function getSpecs() {
     special: useSpecialChar,
   };
 }
+
+function getLength() {
+  var input = prompt("How long do you want your password to be?");
+
+  if (input < 8) {
+    alert("length must be between 8-128 characters");
+  } else if (input > 128) {
+    alert("length must be between 8-128 characters");
+  } else {
+    return input;
+  }
+}
+
 
 function getRandomFrom(array) {
   var index = Math.floor(Math.random() * array.length);
@@ -139,11 +141,11 @@ function getPossibleChars(specs) {
 }
 
 function generatePassword() {
-  var length = getLength();
+  
   var specs = getSpecs();
-
+ 
   var possibleChars = getPossibleChars(specs);
-
+  var length = getLength();
   var password = "";
   for (let index = 0; index < length; index++) {
     password += getRandomFrom(possibleChars);
@@ -160,3 +162,4 @@ function runScript() {
 }
 
 generateBtn.addEventListener("click", runScript);
+
